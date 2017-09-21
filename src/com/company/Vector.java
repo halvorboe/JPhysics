@@ -1,6 +1,8 @@
 package com.company;
 
-public class Vector {
+import java.io.Serializable;
+
+public class Vector implements Serializable{
     double x, y, z;
 
     Vector(double x, double y, double z) {

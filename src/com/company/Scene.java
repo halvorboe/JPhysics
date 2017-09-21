@@ -3,9 +3,10 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Scene {
+public class Scene implements Serializable {
 
     ArrayList<Object> objects;
 
