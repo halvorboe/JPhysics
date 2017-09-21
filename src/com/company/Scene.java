@@ -31,4 +31,11 @@ public class Scene implements Serializable {
         }
     }
 
+    public String toString() {
+        String s = "Scene: \n";
+        for(Object o : objects) {
+            s += o + "\n";
+        }
+        return s;
+    }
 }
