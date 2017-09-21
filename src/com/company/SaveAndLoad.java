@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class SaveAndLoad {
 
 
-    public static void Save (Scene s, String fileName){
+    public static void save (Scene s, String fileName){
         // write object to file
         try{
             FileOutputStream fos = new FileOutputStream(new File(fileName + ".dat"));
@@ -26,7 +26,7 @@ public class SaveAndLoad {
         }
     }
 
-    public static Scene Load (String fileName){
+    public static Scene lad (String fileName){
         // read object from file
         try{
             FileInputStream fis = new FileInputStream(new File(fileName + ".dat"));
