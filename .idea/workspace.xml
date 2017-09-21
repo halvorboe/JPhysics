@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a75b760-adb4-4b48-819e-af810aff8155" name="Default" comment="test">
+    <list default="true" id="6a75b760-adb4-4b48-819e-af810aff8155" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/Test/com/company/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test/com/company/Point.class" afterPath="$PROJECT_DIR$/out/production/Test/com/company/Point.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test/com/company/Sphere.class" afterPath="$PROJECT_DIR$/out/production/Test/com/company/Sphere.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test/com/company/Spring.class" afterPath="$PROJECT_DIR$/out/production/Test/com/company/Spring.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Test/com/company/Vector.class" afterPath="$PROJECT_DIR$/out/production/Test/com/company/Vector.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Point.java" afterPath="$PROJECT_DIR$/src/com/company/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Sphere.java" afterPath="$PROJECT_DIR$/src/com/company/Sphere.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Spring.java" afterPath="$PROJECT_DIR$/src/com/company/Spring.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Vector.java" afterPath="$PROJECT_DIR$/src/com/company/Vector.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,7 +266,7 @@
       <workItem from="1505942371635" duration="1780000" />
       <workItem from="1505984524952" duration="4872000" />
       <workItem from="1505994265887" duration="4791000" />
-      <workItem from="1506004994172" duration="564000" />
+      <workItem from="1506004994172" duration="578000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1505994373607</created>
@@ -280,11 +275,18 @@
       <option name="project" value="LOCAL" />
       <updated>1505994373607</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test">
+      <created>1506005565536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1506005565536</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31036000" />
+    <option name="totallyTimeSpent" value="31050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="813" extended-state="0" />
