@@ -26,18 +26,20 @@ public class Main extends GLCanvas implements GLEventListener {
     Random random = new Random();
 
     Point p1 = new Point(new Vector(0, 4, 0), 1.0, true);
-    Point p2 = new Point(new Vector(0, 3, 0), new Vector(0, 0, 0), 1.0, false);
+    Point p2 = new Point(new Vector(0, 3, 0), new Vector(-10, 0, 0), 1.0, false);
     Point p3 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
     Point p4 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
-    Spring s1 = new Spring(p1, p2, 0.01);
-    Spring s2 = new Spring(p2, p3, 0.01);
-    Spring s3 = new Spring(p3, p4, 0.01);
+    Spring s1 = new Spring(p1, p2, 0.05);
+    Spring s2 = new Spring(p2, p3, 0.05);
+    Spring s3 = new Spring(p3, p4, 0.05);
 
-    Object[] objects = {p1, p2, p3, p4, s1, s2, s3}; // Liste  med alle objekter som er med i modellen
+    Floor f = new Floor();
+
+    Object[] objects = {f, p1, p2, p3, p4, s1, s2, s3}; // Liste  med alle objekter som er med i modellen
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.0001, 0);
+    static final Vector GRAVITY = new Vector(0, -0.005, 0);
 
     public Main() {
         this.addGLEventListener(this);
@@ -46,11 +48,12 @@ public class Main extends GLCanvas implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
         glu = new GLU();
-        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        gl.glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
         gl.glEnable(GL2.GL_DEPTH_TEST);
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_BLEND);
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+
     }
 
 
@@ -75,11 +78,9 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
 
-        gl.glTranslatef(0.0f, 0.0f, -20f);
+        gl.glTranslatef(0.0f, 0.0f, -15f);
         gl.glRotatef(20, 1f, 0f, 0f);
         gl.glRotatef(angle, 0f, 1f, 0f);
-
-        drawFloor();
 
         for (Object o : objects) {
             o.update();
@@ -116,24 +117,6 @@ public class Main extends GLCanvas implements GLEventListener {
 
         FPSAnimator animator = new FPSAnimator(canvas, 30, true);
         animator.start();
-    }
-
-    void drawFloor() {
-        gl.glPointSize(1);
-        for (int i = -10; i <= 10; i++) {
-            gl.glBegin(GL2.GL_LINES);
-            gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(i, -3d, -10);
-            gl.glVertex3d(i, -3d, 10);
-            gl.glEnd();
-        }
-        for (int i = -10; i <= 10; i++) {
-            gl.glBegin(GL2.GL_LINES);
-            gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(-10, -3d, i);
-            gl.glVertex3d(10, -3d, i);
-            gl.glEnd();
-        }
     }
 
     private double map(double v, double from_min, double to_min, double from_max, double to_max) {

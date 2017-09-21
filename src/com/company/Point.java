@@ -37,7 +37,7 @@ public class Point extends Object {
         if (!fixed) {
             velocity = velocity.plus(f.multiply(k / mass)).plus(GRAVITY); // a = F / m
             position = position.plus(velocity);
-            velocity = velocity.multiply(0.70); // L = 0.99
+            velocity = velocity.multiply(0.80); // L = 0.99
         }
     }
 

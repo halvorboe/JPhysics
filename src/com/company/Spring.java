@@ -15,6 +15,7 @@ public class Spring extends Object {
     }
     
     void draw(GL2 gl) {
+        gl.glLineWidth(3);
         gl.glBegin(GL2.GL_LINES);
         gl.glColor3d(0, 1, 0);
 
