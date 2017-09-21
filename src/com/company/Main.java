@@ -36,11 +36,10 @@ public class Main extends GLCanvas implements GLEventListener {
     Spring s1 = new Spring(p1, p2, 0.05);
     Spring s2 = new Spring(p2, p3, 0.05);
     Spring s3 = new Spring(p3, p4, 0.05);
-
-
-
     Floor f = new Floor();
-     // Liste  med alle objekter som er med i modellen
+
+    //scene.addObject();
+    // Liste  med alle objekter som er med i modellen
 
     private float angle = 0;
 
@@ -94,7 +93,7 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glRotatef(20, 1f, 0f, 0f);
         gl.glRotatef(angle, 0f, 1f, 0f);
 
-
+        scene.iterate(gl);
         angle += 0.12;
 
     }
