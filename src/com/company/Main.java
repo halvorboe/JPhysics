@@ -65,6 +65,7 @@ public class Main extends GLCanvas implements GLEventListener {
         scene.addObject(s1);
         scene.addObject(s2);
         scene.addObject(s3);
+        scene.addObject(f);
     }
 
 
