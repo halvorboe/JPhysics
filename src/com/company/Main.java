@@ -11,8 +11,6 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
-import java.util.Arrays;
-
 import java.util.Random;
 
 
@@ -36,7 +34,7 @@ public class Main extends GLCanvas implements GLEventListener {
     Spring s1 = new Spring(p1, p2, 0.05);
     Spring s2 = new Spring(p2, p3, 0.05);
     Spring s3 = new Spring(p3, p4, 0.05);
-    Floor f = new Floor();
+    Plane f = new Plane();
 
     //scene.addObject();
     // Liste  med alle objekter som er med i modellen

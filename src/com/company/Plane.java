@@ -2,9 +2,9 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
-public class Floor extends Object {
+public class Plane extends Object {
 
-    Floor() {
+    Plane() {
         this.enable = false;
     }
 
