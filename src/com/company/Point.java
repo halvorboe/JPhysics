@@ -35,9 +35,16 @@ public class Point extends Object {
 
     void update(Vector f, double k) {
         if (!fixed) {
-            velocity = velocity.plus(f.multiply(k / mass)).plus(GRAVITY); // a = F / m
-            position = position.plus(velocity);
+            velocity = velocity.plus(f.multiply(k / mass)); // a = F / m
             velocity = velocity.multiply(0.80); // L = 0.99
+            position = position.plus(velocity);
+        }
+    }
+
+    void update() {
+        if (!fixed) {
+            velocity = velocity.plus(GRAVITY); // a = F / m
+            position = position.plus(velocity);
         }
     }
 

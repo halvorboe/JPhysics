@@ -27,14 +27,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     Scene scene = new Scene();
 
-    Point p1 = new Point(new Vector(0, 4, 0), 1.0, true);
-    Point p2 = new Point(new Vector(0, 3, 0), new Vector(-10, 0, 0), 1.0, false);
-    Point p3 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
-    Point p4 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
-    Spring s1 = new Spring(p1, p2, 0.05);
-    Spring s2 = new Spring(p2, p3, 0.05);
-    Spring s3 = new Spring(p3, p4, 0.05);
-    Plane f = new Plane();
+
 
     //scene.addObject();
     // Liste  med alle objekter som er med i modellen
@@ -56,13 +49,64 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glEnable(GL2.GL_BLEND);
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 
+        Point p1 = new Point(new Vector(-1, 1, 0), 1.0, true);
+        Point p2 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p3 = new Point(new Vector(1, 1, 0), 1.0, true);
+        Point p4 = new Point(new Vector(-1, 2, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p5 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p6 = new Point(new Vector(1, 2, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p7 = new Point(new Vector(-1, 3, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p8 = new Point(new Vector(0, 3, 0), new Vector(0, 0, 0), 1.0, false);
+        Point p9 = new Point(new Vector(1, 3, 0), new Vector(0, 0, 0), 1.0, false);
+
+
+        Spring s1 = new Spring(p1, p2, 0.005);
+        Spring s2 = new Spring(p1, p4, 0.005);
+
+        Spring s3 = new Spring(p2, p3, 0.005);
+        Spring s4 = new Spring(p2, p5, 0.005);
+
+        Spring s5 = new Spring(p3, p6, 0.005);
+
+        Spring s6 = new Spring(p4, p7, 0.005);
+        Spring s7 = new Spring(p4, p5, 0.005);
+
+        Spring s8 = new Spring(p5, p6, 0.005);
+        Spring s9 = new Spring(p5, p8, 0.005);
+
+        Spring s10 = new Spring(p6, p9, 0.005);
+
+        Spring s11 = new Spring(p7, p8, 0.005);
+
+        Spring s12 = new Spring(p8, p9, 0.05);
+
+
+
+
+
+        Plane f = new Plane();
+
         scene.addObject(p1);
         scene.addObject(p2);
         scene.addObject(p3);
         scene.addObject(p4);
+        scene.addObject(p5);
+        scene.addObject(p6);
+        scene.addObject(p7);
+        scene.addObject(p8);
+        scene.addObject(p9);
         scene.addObject(s1);
         scene.addObject(s2);
         scene.addObject(s3);
+        scene.addObject(s4);
+        scene.addObject(s5);
+        scene.addObject(s6);
+        scene.addObject(s7);
+        scene.addObject(s8);
+        scene.addObject(s9);
+        scene.addObject(s10);
+        scene.addObject(s11);
+        scene.addObject(s12);
         scene.addObject(f);
     }
 

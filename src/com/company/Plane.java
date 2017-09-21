@@ -14,15 +14,15 @@ public class Plane extends Object {
         for (int i = -10; i <= 10; i++) {
             gl.glBegin(GL2.GL_LINES);
             gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(i, -3d, -10);
-            gl.glVertex3d(i, -3d, 10);
+            gl.glVertex3d(i, -5d, -10);
+            gl.glVertex3d(i, -5d, 10);
             gl.glEnd();
         }
         for (int i = -10; i <= 10; i++) {
             gl.glBegin(GL2.GL_LINES);
             gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(-10, -3d, i);
-            gl.glVertex3d(10, -3d, i);
+            gl.glVertex3d(-10, -5d, i);
+            gl.glVertex3d(10, -5d, i);
             gl.glEnd();
         }
     }
