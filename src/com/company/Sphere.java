@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.Random;
 
+import static com.company.Main.GRAVITY;
+
 public class Sphere {
 
     private double r;
@@ -52,7 +54,7 @@ public class Sphere {
                 }
 
                 // Gravity
-                vel.y -= gravity;
+                vel = vel.plus(GRAVITY);
 
                 // Resistance
                 vel = vel.multiply(0.99);
