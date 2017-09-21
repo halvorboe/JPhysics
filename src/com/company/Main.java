@@ -24,6 +24,8 @@ public class Main extends GLCanvas implements GLEventListener {
     private GL2 gl;
     private GLU glu;
 
+    // GDSAFS
+
     private float angle = 0;
     Sphere[] spheres;
     final int NUMBER_OF_SPHERES = 10;
