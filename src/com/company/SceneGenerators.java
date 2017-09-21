@@ -3,7 +3,7 @@ package com.company;
 public class SceneGenerators {
     public static Scene cloth(Scene scene) {
 
-        Point[][] points = new Point[10][10];
+        Point[][] points = new Point[10][10]; //sd
 
         for(int i = 0; i < 10; i++) {
             for(int j = 0; j < 10; j++) {
