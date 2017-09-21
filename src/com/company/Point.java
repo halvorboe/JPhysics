@@ -2,9 +2,11 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
+import java.io.Serializable;
+
 import static com.company.Main.GRAVITY;
 
-public class Point extends Object {
+public class Point extends Object implements Serializable{
 
     private Vector position, velocity;
     private double mass;
