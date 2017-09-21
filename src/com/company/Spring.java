@@ -1,7 +1,6 @@
 package com.company;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.glu.GLU;
 
 public class Spring {
     private Point from, to;
@@ -36,9 +35,5 @@ public class Spring {
 
     double extension() {
         return to.getPos().minus(from.getPos()).length() - length;
-    }
-
-    public double getK() {
-        return k;
     }
 }
