@@ -60,10 +60,10 @@ public class Main extends GLCanvas implements GLEventListener {
         Point p9 = new Point(new Vector(1, 3, 0), new Vector(0, 0, 0), 1.0, false);
 
 
-        Spring s1 = new Spring(p1, p2, 0.005);
+        Spring s1 = new Spring(p1, p2, 0.008);
         Spring s2 = new Spring(p1, p4, 0.005);
 
-        Spring s3 = new Spring(p2, p3, 0.005);
+        Spring s3 = new Spring(p2, p3, 0.008);
         Spring s4 = new Spring(p2, p5, 0.005);
 
         Spring s5 = new Spring(p3, p6, 0.005);
