@@ -1,21 +1,17 @@
 package com.company;
 
 
-import java.awt.*;
-import javax.swing.*;
-
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.FPSAnimator;
-import sun.security.provider.ConfigFile;
 
-import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
-import static com.company.SceneGenerators.cloth;
 import static com.company.SceneGenerators.sphere;
 
 
@@ -39,7 +35,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, 0.0001, 0);
+    static final Vector GRAVITY = new Vector(0, -0.001, 0);
 
     public Main() {
         this.addGLEventListener(this);

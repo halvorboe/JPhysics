@@ -47,7 +47,7 @@ public class Point extends Object{
         if (!fixed) {
             velocity = velocity.plus(force);
             velocity = velocity.plus(GRAVITY); // a = F / m
-            velocity = velocity.multiply(0.97);
+            velocity = velocity.multiply(0.7);
             position = position.plus(velocity);
         }
     }

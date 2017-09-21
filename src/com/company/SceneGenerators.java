@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
-
 public class SceneGenerators {
     public static Scene cloth(Scene scene) {
 
@@ -49,7 +47,7 @@ public class SceneGenerators {
         int resolution = 13;
         int pointCount;
         Point[][] points = new Point[resolution+1][resolution+1];
-        double springK = 0.01; //Spring strength
+        double springK = 0.001; //Spring strength
 
         for(int lat = 0; lat <= resolution; lat++){
             double lat_angle = map(lat,0,resolution,0,Math.PI);
@@ -61,21 +59,26 @@ public class SceneGenerators {
                 Vector pos = new Vector(x,y,z);
                 Point point = new Point(pos,1,false);
                 points[lat][lon] = point;
+                scene.addObject(point);
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i - 1 > 0) {
+                    scene.addObject(new Spring(points[i][j], points[i - 1][j], 0.05));
+                }
+                if (j - 1 > 0) {
+                    scene.addObject(new Spring(points[i][j], points[i][j - 1], 0.05));
+                }
+                if (i + 1 < 10) {
+                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.05));
+                }
+                if (j + 1 < 10) {
+                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.05));
+                }
             }
         }
 
-        for(int i = 0; i < resolution; i++){
-            for(int k = 0; k < resolution; k++){
-                Point a = points[i][k];
-                Point b = points[i][k + 1];
-                Point c = points[i+1][k];
-                Spring s1 = new Spring(a,b,springK);
-                Spring s2 = new Spring(a,c,springK);
-                scene.addObject(a);
-                scene.addObject(s1);
-                scene.addObject(s2);
-            }
-        }
         return scene;
     }
     //Helper function
