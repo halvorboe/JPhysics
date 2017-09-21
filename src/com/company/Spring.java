@@ -10,7 +10,7 @@ public class Spring extends Object {
         this.p1 = p1;
         this.p2 = p2;
         this.k = k;
-        this.length = p2.getPos().minus(p1.getPos()).length();
+        this.length = p2.getPosition().minus(p1.getPosition()).length();
 
     }
     
@@ -18,19 +18,19 @@ public class Spring extends Object {
         gl.glBegin(GL2.GL_LINES);
         gl.glColor3d(0, 1, 0);
 
-        gl.glVertex3d(p1.getPos().x, p1.getPos().y, p1.getPos().z);
-        gl.glVertex3d(p2.getPos().x, p2.getPos().y, p2.getPos().z);
+        gl.glVertex3d(p1.getPosition().x, p1.getPosition().y, p1.getPosition().z);
+        gl.glVertex3d(p2.getPosition().x, p2.getPosition().y, p2.getPosition().z);
 
         gl.glEnd();
     }
 
     void update() {
         // Denne skal adde en applied force istedet
-        p1.update(p2.getPos().minus(p1.getPos()), k * extension()); // F = kx
-        p2.update(p1.getPos().minus(p2.getPos()), k * extension());
+        p1.update(p2.getPosition().minus(p1.getPosition()), k * extension()); // F = kx
+        p2.update(p1.getPosition().minus(p2.getPosition()), k * extension());
     }
 
     private double extension() {
-        return p2.getPos().minus(p1.getPos()).length() - length;
+        return p2.getPosition().minus(p1.getPosition()).length() - length;
     }
 }

@@ -6,20 +6,20 @@ import static com.company.Main.GRAVITY;
 
 public class Point extends Object {
 
-    private Vector pos, vel;
+    private Vector position, velocity;
     private double mass;
     private boolean fixed;
 
-    public Point(Vector pos, Vector vel, double mass, boolean fixed) {
-        this.pos = pos;
-        this.vel = vel;
+    public Point(Vector position, Vector velocity, double mass, boolean fixed) {
+        this.position = position;
+        this.velocity = velocity;
         this.mass = mass;
         this.fixed = fixed;
     }
 
-    public Point(Vector pos, double mass, boolean fixed) {
-        this.pos = pos;
-        this.vel = new Vector(0, 0, 0);
+    public Point(Vector position, double mass, boolean fixed) {
+        this.position = position;
+        this.velocity = new Vector(0, 0, 0);
         this.mass = mass;
         this.fixed = fixed;
     }
@@ -29,27 +29,20 @@ public class Point extends Object {
         gl.glBegin(GL2.GL_POINTS);
 
         gl.glColor3d(0, 0, 1);
-        gl.glVertex3d(pos.x, pos.y, pos.z);
+        gl.glVertex3d(position.x, position.y, position.z);
         gl.glEnd();
     }
 
     void update(Vector f, double k) {
         if (!fixed) {
-            vel = vel.plus(f.multiply(k / mass)).plus(GRAVITY); // a = F / m
-            pos = pos.plus(vel);
-            vel = vel.multiply(0.99); // L = 0.99
+            velocity = velocity.plus(f.multiply(k / mass)).plus(GRAVITY); // a = F / m
+            position = position.plus(velocity);
+            velocity = velocity.multiply(0.70); // L = 0.99
         }
     }
 
-    public Vector getPos() {
-        return pos;
+    public Vector getPosition() {
+        return position;
     }
 
-    public Vector getVel() {
-        return vel;
-    }
-
-    public double getMass() {
-        return mass;
-    }
 }

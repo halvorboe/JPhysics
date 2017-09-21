@@ -17,21 +17,27 @@ import java.util.Random;
 public class Main extends GLCanvas implements GLEventListener {
 
     private static String TITLE = "-";
-    private static final int CANVAS_WIDTH = 500;  // width of the drawable
-    private static final int CANVAS_HEIGHT = 500; // height of the drawable
+    private static final int CANVAS_WIDTH = 1000;  // width of the drawable
+    private static final int CANVAS_HEIGHT = 1000; // height of the drawable
 
     private GL2 gl;
     private GLU glu;
 
-    Point p1 = new Point(new Vector(0, 3, 0), 1.0, true);
-    Point p2 = new Point(new Vector(0, -0, 0), new Vector(0.1, -0.1, 0), 10.0, false);
-    Spring s1 = new Spring(p1, p2, 0.03);
+    Random random = new Random();
 
-    Object[] objects = {p1, p2, s1}; // Liste  med alle objekter som er med i modellen
+    Point p1 = new Point(new Vector(0, 4, 0), 1.0, true);
+    Point p2 = new Point(new Vector(0, 3, 0), new Vector(0, 0, 0), 1.0, false);
+    Point p3 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
+    Point p4 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
+    Spring s1 = new Spring(p1, p2, 0.01);
+    Spring s2 = new Spring(p2, p3, 0.01);
+    Spring s3 = new Spring(p3, p4, 0.01);
+
+    Object[] objects = {p1, p2, p3, p4, s1, s2, s3}; // Liste  med alle objekter som er med i modellen
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.01, 0);
+    static final Vector GRAVITY = new Vector(0, -0.0001, 0);
 
     public Main() {
         this.addGLEventListener(this);
