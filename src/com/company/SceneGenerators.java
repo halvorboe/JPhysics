@@ -62,19 +62,19 @@ public class SceneGenerators {
                 scene.addObject(point);
             }
         }
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < points[0].length; j++) {
                 if (i - 1 > 0) {
-                    scene.addObject(new Spring(points[i][j], points[i - 1][j], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i - 1][j], 0.005));
                 }
                 if (j - 1 > 0) {
-                    scene.addObject(new Spring(points[i][j], points[i][j - 1], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i][j - 1], 0.005));
                 }
                 if (i + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.005));
                 }
                 if (j + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.005));
                 }
             }
         }
