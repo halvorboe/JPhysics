@@ -10,8 +10,7 @@ public class Spring extends Object {
         this.p1 = p1;
         this.p2 = p2;
         this.k = k;
-        this.length = p2.getPosition().minus(p1.getPosition()).length();
-
+        this.length = p2.getPosition().minus(p1.getPosition()).length() / 2;
     }
     
     void draw(GL2 gl) {
