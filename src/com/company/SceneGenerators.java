@@ -59,6 +59,10 @@ public class SceneGenerators {
                 Vector pos = new Vector(x,y,z);
                 Point point = new Point(pos,1,false);
                 points[lat][lon] = point;
+                //point.addForce(new Vector(
+                //        radius*Math.sin(lon_angle)*Math.cos(lat_angle),
+                //        radius*Math.sin(lon_angle)*Math.sin(lat_angle),
+                //        radius*Math.cos(lon_angle)).multiply(0.001));
                 scene.addObject(point);
             }
         }
