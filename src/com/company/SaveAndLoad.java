@@ -22,7 +22,7 @@ public class SaveAndLoad {
             fos.close();
         }
         catch(IOException e){
-
+            System.out.print("Error: " + e.getMessage());
         }
     }
 

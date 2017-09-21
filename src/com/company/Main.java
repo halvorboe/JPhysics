@@ -85,6 +85,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
 
         Plane f = new Plane();
+        Sphere s = new Sphere(new Vector(0,0,0),1,15);
 
         scene.addObject(p1);
         scene.addObject(p2);
@@ -108,6 +109,9 @@ public class Main extends GLCanvas implements GLEventListener {
         scene.addObject(s11);
         scene.addObject(s12);
         scene.addObject(f);
+        scene.addObject(s);
+
+
     }
 
 
