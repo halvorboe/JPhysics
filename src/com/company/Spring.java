@@ -13,6 +13,8 @@ public class Spring {
         this.k = k;
     }
 
+    // test
+
     public double getX0() {
         return x0;
     }
