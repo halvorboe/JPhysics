@@ -10,11 +10,14 @@ public class Point extends Object{
     private double mass;
     private boolean fixed;
 
+    private Vector force;
+
     public Point(Vector position, Vector velocity, double mass, boolean fixed) {
         this.position = position;
         this.velocity = velocity;
         this.mass = mass;
         this.fixed = fixed;
+        this.force = new Vector(0, 0, 0);
     }
 
     public Point(Vector position, double mass, boolean fixed) {
@@ -22,6 +25,7 @@ public class Point extends Object{
         this.velocity = new Vector(0, 0, 0);
         this.mass = mass;
         this.fixed = fixed;
+        this.force = new Vector(0, 0, 0);
     }
 
     void draw(GL2 gl) {
@@ -36,16 +40,20 @@ public class Point extends Object{
     void update(Vector f, double k) {
         if (!fixed) {
             velocity = velocity.plus(f.multiply(k / mass)); // a = F / m // L = 0.99
-            velocity = velocity.multiply(0.97);
-            position = position.plus(velocity);
         }
     }
 
     void update() {
         if (!fixed) {
+            velocity = velocity.plus(force);
             velocity = velocity.plus(GRAVITY); // a = F / m
+            velocity = velocity.multiply(0.97);
             position = position.plus(velocity);
         }
+    }
+
+    void addForce(Vector f) {
+        force = force.plus(f);
     }
 
     public Vector getPosition() {

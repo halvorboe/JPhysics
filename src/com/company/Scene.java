@@ -28,7 +28,9 @@ public class Scene implements Serializable {
         }
         for (Object o : objects) {
             o.draw(gl);
+            //o.addForce(new Vector(0, 0, 0));
         }
+
     }
 
     public String toString() {

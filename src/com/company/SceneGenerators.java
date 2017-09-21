@@ -34,6 +34,9 @@ public class SceneGenerators {
         Plane f = new Plane();
         scene.addObject(f);
 
+        for (Object o : scene.objects) {
+            o.addForce(new Vector(0.01, 0, -0.0));
+        }
         System.out.println(scene);
 
         return scene;

@@ -27,4 +27,8 @@ public class Object implements Serializable{
 
     }
 
+    void addForce(Vector v) {
+
+    }
+
 }
