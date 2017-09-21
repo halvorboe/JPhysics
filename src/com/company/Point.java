@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL2;
 
 import static com.company.Main.GRAVITY;
 
-public class Point {
+public class Point extends Object {
 
     private Vector pos, vel;
     private double mass;
