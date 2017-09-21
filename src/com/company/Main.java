@@ -11,6 +11,8 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
+import java.util.Arrays;
+
 import java.util.Random;
 
 
@@ -31,7 +33,7 @@ public class Main extends GLCanvas implements GLEventListener {
     Point p2 = new Point(new Vector(0, 3, 0), new Vector(-10, 0, 0), 1.0, false);
     Point p3 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
     Point p4 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
-     new Spring(p1, p2, 0.05);
+    Spring s1 = new Spring(p1, p2, 0.05);
     Spring s2 = new Spring(p2, p3, 0.05);
     Spring s3 = new Spring(p3, p4, 0.05);
 
@@ -57,6 +59,13 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glEnable(GL2.GL_BLEND);
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 
+        scene.addObject(p1);
+        scene.addObject(p2);
+        scene.addObject(p3);
+        scene.addObject(p4);
+        scene.addObject(s1);
+        scene.addObject(s2);
+        scene.addObject(s3);
     }
 
 
@@ -86,8 +95,6 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glRotatef(angle, 0f, 1f, 0f);
 
 
-
-
         angle += 0.12;
 
     }
@@ -112,7 +119,7 @@ public class Main extends GLCanvas implements GLEventListener {
         frame.pack();
         frame.setVisible(true);
 
-        FPSAnimator animator = new FPSAnimator(canvas, 30, true);
+        FPSAnimator animator = new FPSAnimator(canvas, 60, true);
         animator.start();
     }
 
