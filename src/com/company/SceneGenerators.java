@@ -45,9 +45,7 @@ public class SceneGenerators {
         Vector position = new Vector(0,0,0);
         double radius = 1;
         int resolution = 13;
-        int pointCount;
         Point[][] points = new Point[resolution+1][resolution+1];
-        double springK = 0.001; //Spring strength
 
         for(int lat = 0; lat <= resolution; lat++){
             double lat_angle = map(lat,0,resolution,0,Math.PI);
