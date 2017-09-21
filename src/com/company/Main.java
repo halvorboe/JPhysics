@@ -25,17 +25,20 @@ public class Main extends GLCanvas implements GLEventListener {
 
     Random random = new Random();
 
+    Scene scene = new Scene();
+
     Point p1 = new Point(new Vector(0, 4, 0), 1.0, true);
     Point p2 = new Point(new Vector(0, 3, 0), new Vector(-10, 0, 0), 1.0, false);
     Point p3 = new Point(new Vector(0, 2, 0), new Vector(0, 0, 0), 1.0, false);
     Point p4 = new Point(new Vector(0, 1, 0), new Vector(0, 0, 0), 1.0, false);
-    Spring s1 = new Spring(p1, p2, 0.05);
+     new Spring(p1, p2, 0.05);
     Spring s2 = new Spring(p2, p3, 0.05);
     Spring s3 = new Spring(p3, p4, 0.05);
 
-    Floor f = new Floor();
 
-    Object[] objects = {f, p1, p2, p3, p4, s1, s2, s3}; // Liste  med alle objekter som er med i modellen
+
+    Floor f = new Floor();
+     // Liste  med alle objekter som er med i modellen
 
     private float angle = 0;
 
@@ -82,13 +85,7 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glRotatef(20, 1f, 0f, 0f);
         gl.glRotatef(angle, 0f, 1f, 0f);
 
-        for (Object o : objects) {
-            o.update();
-        }
 
-        for (Object o : objects) {
-            o.draw(gl);
-        }
 
 
         angle += 0.12;

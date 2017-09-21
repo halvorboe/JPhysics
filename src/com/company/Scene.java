@@ -1,22 +1,33 @@
 package com.company;
 
 
+import com.jogamp.opengl.GL2;
+
 import java.util.ArrayList;
 
 public class Scene {
 
-    ArrayList<Object> objects = new ArrayList<Object>();
+    ArrayList<Object> objects;
 
     Scene() {
-
+        objects = new ArrayList<Object>();
     }
 
-    void addObject(Object o) {
+    public void addObject(Object o) {
         objects.add(o);
     }
 
-    void removeObject(Object o) {
+    public void removeObject(Object o) {
         objects.remove(o);
+    }
+
+    public void iterate(GL2 gl) {
+        for (Object o : objects) {
+            o.update();
+        }
+        for (Object o : objects) {
+            o.draw(gl);
+        }
     }
 
 }
