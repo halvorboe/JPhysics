@@ -36,7 +36,7 @@ public class Point extends Object{
     void update(Vector f, double k) {
         if (!fixed) {
             velocity = velocity.plus(f.multiply(k / mass)); // a = F / m // L = 0.99
-            velocity = velocity.multiply(0.98);
+            velocity = velocity.multiply(0.97);
             position = position.plus(velocity);
         }
     }
