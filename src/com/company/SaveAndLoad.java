@@ -26,7 +26,7 @@ public class SaveAndLoad {
         }
     }
 
-    public static Scene lad (String fileName){
+    public static Scene load (String fileName){
         // read object from file
         try{
             FileInputStream fis = new FileInputStream(new File(fileName + ".dat"));
