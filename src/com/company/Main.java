@@ -23,7 +23,7 @@ public class Main extends GLCanvas implements GLEventListener {
     private GL2 gl;
     private GLU glu;
 
-    // GDSAFS
+    // GDSAFSdfadsf
 
     private float angle = 0;
     Sphere[] spheres;
