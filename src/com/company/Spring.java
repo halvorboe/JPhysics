@@ -2,9 +2,8 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
-import java.io.Serializable;
 
-public class Spring extends Object implements Serializable{
+public class Spring extends Object{
     private Point p1, p2;
     private double k, length;
 

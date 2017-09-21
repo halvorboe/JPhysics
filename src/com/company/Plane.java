@@ -2,9 +2,7 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
-import java.io.Serializable;
-
-public class Plane extends Object implements Serializable {
+public class Plane extends Object{
 
     Plane() {
         this.enable = false;

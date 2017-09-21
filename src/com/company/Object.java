@@ -7,7 +7,9 @@ package com.company;
 
 import com.jogamp.opengl.GL2;
 
-public class Object {
+import java.io.Serializable;
+
+public class Object implements Serializable{
 
     boolean enable; // Om fysikk skal beregnes for dette objektet
 
