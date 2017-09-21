@@ -7,6 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jogl-os-x11" level="application" />
+    <orderEntry type="library" name="jogl-all" level="application" />
   </component>
 </module>
