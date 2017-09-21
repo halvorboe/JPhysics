@@ -1,7 +1,6 @@
 package com.company;
 
 
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -28,7 +27,10 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
     Sphere[] spheres;
-    final int NUMBER_OF_SPHERES = 10;
+    public final int NUMBER_OF_SPHERES = 0;
+
+    Spring spring = new Spring(new Point(new Vector(0, 3, 0), 1.0, true), new Point(new Vector(0, -0, 0), new Vector(0.1, -0.1, 0), 10.0, false), 0.03);
+    static final Vector GRAVITY = new Vector(0, -0.01, 0);
 
     public Main() {
         this.addGLEventListener(this);
@@ -51,8 +53,8 @@ public class Main extends GLCanvas implements GLEventListener {
 
         spheres = new Sphere[NUMBER_OF_SPHERES];
 
-        for(int i = 0; i < spheres.length; i++) {
-            spheres[i] = new Sphere(random.nextDouble() * 4 - 2, random.nextDouble() * 4 - 2, random.nextDouble() * 4 - 2, random.nextDouble() * 1 - 0.5,random.nextDouble() * 1 - 0.5,random.nextDouble() * 1 - 0.5, 1d);
+        for (int i = 0; i < spheres.length; i++) {
+            spheres[i] = new Sphere(random.nextDouble() * 4 - 2, random.nextDouble() * 4 - 2, random.nextDouble() * 4 - 2, random.nextDouble() * 1 - 0.5, random.nextDouble() * 1 - 0.5, random.nextDouble() * 1 - 0.5, 1d);
         }
     }
 
@@ -60,7 +62,7 @@ public class Main extends GLCanvas implements GLEventListener {
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
 
         if (height == 0) height = 1;   // prevent divide by zero
-        float aspect = (float)width / height;
+        float aspect = (float) width / height;
 
         //Set the view port (display area) to cover the entire window
         //gl.glViewport(0, 0, width/2, height/2);
@@ -84,7 +86,6 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glLoadIdentity();  // reset the model-view matrix
 
 
-
         // ----- Render a triangle -----
         // translated left and into the screen
         gl.glTranslatef(0.0f, 0.0f, -20f);
@@ -93,14 +94,16 @@ public class Main extends GLCanvas implements GLEventListener {
         //gl.glRotatef(10, 1f, 0f, 0f);
 
         gl.glPointSize(1f);
-         // draw using triangles
+        // draw using triangles
         drawGrid();
 
-        for(Sphere s : spheres) {
+        for (Sphere s : spheres) {
             drawSphere(s);
         }
 
 
+        spring.update();
+        spring.draw(gl);
 
 
         angle += 0.12;
@@ -110,9 +113,12 @@ public class Main extends GLCanvas implements GLEventListener {
     /**
      * Called before the OpenGL context is destroyed. Release resource such as buffers.
      */
-    public void dispose(GLAutoDrawable drawable) { }
+    public void dispose(GLAutoDrawable drawable) {
+    }
 
-    /** The entry main() method to setup the top-level JFrame with our OpenGL canvas inside */
+    /**
+     * The entry main() method to setup the top-level JFrame with our OpenGL canvas inside
+     */
     public static void main(String[] args) {
         GLCanvas canvas = new Main();
         canvas.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
@@ -131,55 +137,55 @@ public class Main extends GLCanvas implements GLEventListener {
     void drawSphere(Sphere s) {
 
         final int RES = (int) Math.round(s.getR() * 30);
-        for(int a = 5; a <= 5; a++) {
+        for (int a = 5; a <= 5; a++) {
             gl.glLineWidth(25.2f - (float) Math.pow(a, 2));
-        gl.glColor4d(s.getColor().x, s.getColor().y, s.getColor().z, 0.15 + (Math.pow(a, 2) * 3)/100);
-        for(int lon = 0; lon < RES; lon++) {
-            gl.glBegin(GL2.GL_LINE_STRIP);
-            for (int lat = 0; lat < RES; lat++) {
-                double lon_rad = map(lon, 0, RES, 0, 2 * Math.PI);
-                double lat_rad = map(lat, 0, RES, 0, 2 * Math.PI);
-                double x = s.getPos().x + s.getR() * Math.sin(lon_rad) * Math.cos(lat_rad);
-                double y = s.getPos().y + s.getR() * Math.sin(lon_rad) * Math.sin(lat_rad);
-                double z = s.getPos().z + s.getR() * Math.cos(lon_rad);
-                //double lat_color = map(lat, 0, RES, 0.5d, 1d);
-                //gl.glColor3d(lat_color, 0, 0);
-                gl.glVertex3d(x, y, z);
-            }
-            gl.glEnd();
-        }
-
-        for(int lat = 0; lat < RES; lat++) {
-            gl.glBegin(GL2.GL_LINE_STRIP);
+            gl.glColor4d(s.getColor().x, s.getColor().y, s.getColor().z, 0.15 + (Math.pow(a, 2) * 3) / 100);
             for (int lon = 0; lon < RES; lon++) {
-                double lon_rad = map(lon, 0, RES, 0, 2 * Math.PI);
-                double lat_rad = map(lat, 0, RES, 0, 2 * Math.PI);
-                double x = s.getPos().x + s.getR() * Math.sin(lon_rad) * Math.cos(lat_rad);
-                double y = s.getPos().y + s.getR() * Math.sin(lon_rad) * Math.sin(lat_rad);
-                double z = s.getPos().z + s.getR() * Math.cos(lon_rad);
-                //double lat_color = map(lat, 0, RES, 1d, 0.1d);
-                //gl.glColor3d(lat_color, 0, 0);
-                gl.glVertex3d(x, y, z);
+                gl.glBegin(GL2.GL_LINE_STRIP);
+                for (int lat = 0; lat < RES; lat++) {
+                    double lon_rad = map(lon, 0, RES, 0, 2 * Math.PI);
+                    double lat_rad = map(lat, 0, RES, 0, 2 * Math.PI);
+                    double x = s.getPos().x + s.getR() * Math.sin(lon_rad) * Math.cos(lat_rad);
+                    double y = s.getPos().y + s.getR() * Math.sin(lon_rad) * Math.sin(lat_rad);
+                    double z = s.getPos().z + s.getR() * Math.cos(lon_rad);
+                    //double lat_color = map(lat, 0, RES, 0.5d, 1d);
+                    //gl.glColor3d(lat_color, 0, 0);
+                    gl.glVertex3d(x, y, z);
+                }
+                gl.glEnd();
             }
-            gl.glEnd();
+
+            for (int lat = 0; lat < RES; lat++) {
+                gl.glBegin(GL2.GL_LINE_STRIP);
+                for (int lon = 0; lon < RES; lon++) {
+                    double lon_rad = map(lon, 0, RES, 0, 2 * Math.PI);
+                    double lat_rad = map(lat, 0, RES, 0, 2 * Math.PI);
+                    double x = s.getPos().x + s.getR() * Math.sin(lon_rad) * Math.cos(lat_rad);
+                    double y = s.getPos().y + s.getR() * Math.sin(lon_rad) * Math.sin(lat_rad);
+                    double z = s.getPos().z + s.getR() * Math.cos(lon_rad);
+                    //double lat_color = map(lat, 0, RES, 1d, 0.1d);
+                    //gl.glColor3d(lat_color, 0, 0);
+                    gl.glVertex3d(x, y, z);
+                }
+                gl.glEnd();
+            }
         }
-    }
         s.update(spheres);
     }
 
     void drawGrid() {
         gl.glPointSize(1);
-        for(int i = -10; i <= 10; i++) {
+        for (int i = -10; i <= 10; i++) {
             gl.glBegin(GL2.GL_LINES);
             gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(i , -3d, -10);
+            gl.glVertex3d(i, -3d, -10);
             gl.glVertex3d(i, -3d, 10);
             gl.glEnd();
         }
-        for(int i = -10; i <= 10; i++) {
+        for (int i = -10; i <= 10; i++) {
             gl.glBegin(GL2.GL_LINES);
             gl.glColor3d(1, 0, 0);
-            gl.glVertex3d(-10 , -3d, i);
+            gl.glVertex3d(-10, -3d, i);
             gl.glVertex3d(10, -3d, i);
             gl.glEnd();
         }

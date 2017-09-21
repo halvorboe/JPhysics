@@ -1,45 +1,39 @@
 package com.company;
 
+import com.jogamp.opengl.GL2;
+
 public class Spring {
-    private double x0, y1, z2, x, y, z, k;
+    private Point from, to;
+    private double k, length;
 
-    public Spring(double x0, double y1, double z2, double x, double y, double z, double k) {
-        this.x0 = x0;
-        this.y1 = y1;
-        this.z2 = z2;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    Spring(Point from, Point to, double k) {
+        this.from = from;
+        this.to = to;
         this.k = k;
+        this.length = to.getPos().minus(from.getPos()).length();
+
     }
 
-    // test
+    void draw(GL2 gl) {
+        gl.glBegin(GL2.GL_LINES);
+        gl.glColor3d(0, 1, 0);
 
-    public double getX0() {
-        return x0;
+        gl.glVertex3d(from.getPos().x, from.getPos().y, from.getPos().z);
+        gl.glVertex3d(to.getPos().x, to.getPos().y, to.getPos().z);
+
+        gl.glEnd();
+
+        from.draw(gl);
+        to.draw(gl);
+
     }
 
-    public double getY1() {
-        return y1;
+    void update() {
+        from.update(to.getPos().minus(from.getPos()), k * extension()); // F = kx
+        to.update(from.getPos().minus(to.getPos()), k * extension());
     }
 
-    public double getZ2() {
-        return z2;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public double getZ() {
-        return z;
-    }
-
-    public double getK() {
-        return k;
+    double extension() {
+        return to.getPos().minus(from.getPos()).length() - length;
     }
 }
