@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Random;
+
 public class SceneGenerators {
     public static Scene cloth(Scene scene) {
 
@@ -36,7 +38,7 @@ public class SceneGenerators {
     }
 
     public static Scene sphere(Scene scene){
-        Vector position = new Vector(0,0,0);
+        /*Vector position = new Vector(0,0,0);
         double radius = 1;
         int resolution = 13;
         Point[][] points = new Point[resolution+1][resolution+1];
@@ -73,7 +75,35 @@ public class SceneGenerators {
                     scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.005));
                 }
             }
+        }*/
+        int samples = 300;
+        Random rand = new Random();
+        double rnd = rand.nextDouble()*samples;
+
+        Point[] points = new Point[samples];
+        double offset = 4.0/samples;
+        double increment = Math.PI*(3.0-Math.sqrt(5.0));
+
+        for(int i = 0; i < samples; i++){
+            double y = ((i*offset) - 1) + (offset/2.0);
+            double r = Math.sqrt(1 - Math.pow(y,2));
+
+            double angle = ((i + rnd)%samples)*increment;
+
+            double x = Math.cos(angle)*r;
+            double z = Math.sin(angle)*r;
+            Vector pos = new Vector(x,y,z);
+            points[i] = new Point(pos,1.0,true);
+            scene.addObject(points[i]);
         }
+
+        //Connects the points with springs
+        for(int i = 0; i < points.length; i++){
+            
+        }
+
+
+
 
         return scene;
     }

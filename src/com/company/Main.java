@@ -13,6 +13,7 @@ import java.awt.*;
 import java.util.Random;
 
 import static com.company.SceneGenerators.cloth;
+import static com.company.SceneGenerators.sphere;
 
 
 public class Main extends GLCanvas implements GLEventListener {
@@ -35,7 +36,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.001, 0);
+    static final Vector GRAVITY = new Vector(0, -0.000, 0);
 
     public Main() {
         this.addGLEventListener(this);
@@ -45,7 +46,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     public void init(GLAutoDrawable drawable) {
         //scene = cloth(scene);
-        scene = cloth(scene);
+        scene = sphere(scene);
 
         gl = drawable.getGL().getGL2();
         glu = new GLU();
@@ -54,8 +55,6 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
         gl.glEnable(GL2.GL_BLEND);
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
-
-
     }
 
 
@@ -80,7 +79,7 @@ public class Main extends GLCanvas implements GLEventListener {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
 
-        gl.glTranslatef(0.0f, 0.0f, -20f);
+        gl.glTranslatef(0.0f, 0.0f, -8f);
         gl.glRotatef(-20, 1f, 0f, 0f);
         gl.glRotatef(angle, 0f, 1f, 0f);
 
