@@ -28,7 +28,7 @@ public class Vector implements Serializable{
     }
 
     Vector minus(Vector v) {
-        return new Vector(x - v.x, y - v.y, v.z - z);
+        return new Vector(x - v.x, y - v.y, z - v.z);
     }
 
     Vector multiply(Vector v) {
