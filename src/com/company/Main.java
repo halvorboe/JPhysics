@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-import static com.company.SceneGenerators.sphere;
+import static com.company.SceneGenerators.cloth;
 
 
 public class Main extends GLCanvas implements GLEventListener {
@@ -45,7 +45,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     public void init(GLAutoDrawable drawable) {
         //scene = cloth(scene);
-        scene = sphere(scene);
+        scene = cloth(scene);
 
         gl = drawable.getGL().getGL2();
         glu = new GLU();

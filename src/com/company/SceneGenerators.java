@@ -33,7 +33,7 @@ public class SceneGenerators {
         scene.addObject(f);
 
         for (Object o : scene.objects) {
-            o.addForce(new Vector(0.01, 0, -0.0));
+            //o.addForce(new Vector(0.01, 0, -0.0));
         }
         System.out.println(scene);
 
