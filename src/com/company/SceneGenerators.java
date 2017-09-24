@@ -77,7 +77,7 @@ public class SceneGenerators {
                 }
             }
         }*/
-        int samples = 150;
+        int samples = 100;
         Random rand = new Random();
         double rnd = rand.nextDouble()*samples;
 
@@ -94,7 +94,7 @@ public class SceneGenerators {
             double x = Math.cos(angle)*r;
             double z = Math.sin(angle)*r;
             Vector pos = new Vector(x,y,z);
-            points[i] = new Point(pos, 0.01, false);
+            points[i] = new Point(pos, 1, false);
             scene.addObject(points[i]);
         }
 
@@ -104,7 +104,7 @@ public class SceneGenerators {
 
         //Connects the points with springs
         for (int n = 0; n < NUMBER_OF_SPRINGS; n++) {
-            Spring spring = new Spring(new Point(new Vector(0, 0, 0), 10, false), new Point(new Vector(100000, 100000, 1000000), 100, false), 1);
+            Spring spring = new Spring(new Point(new Vector(0, 0, 0), 1, false), new Point(new Vector(100000, 100000, 1000000), 100, false), 1);
             for (int i = 0; i < points.length; i++) {
                 for (int j = 0; j < points.length; j++) {
                     Vector p1 = points[i].getPosition();
@@ -118,7 +118,7 @@ public class SceneGenerators {
                             }
                         }
                         if (!found) {
-                            spring = new Spring(points[i], points[j], 0.0125);
+                            spring = new Spring(points[i], points[j], 1.0);
                         }
                     }
 
@@ -129,13 +129,9 @@ public class SceneGenerators {
 
         }
 
-        /*Point centre = new Point(new Vector(0,0, 0), 0.01, false);
-        scene.addObject(centre);
         for(Point p : points) {
-            scene.addObject(new Spring(p,centre, 0.1));
-        }*/
-        System.out.println(springs);
-
+            p.addForce(p.getPosition().multiply(0.02));
+        }
 
         return scene;
     }

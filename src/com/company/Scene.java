@@ -26,15 +26,23 @@ public class Scene implements Serializable {
     }
 
     public void removeObject(Object o) {
-        objects.remove(o);
+        try {
+            objects.remove(o);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void iterate(GL2 gl) {
         for (Object o : objects) {
-            o.update(this);
+            if (o.enable) {
+                o.update(this);
+            }
         }
         for (Object o : objects) {
-            o.draw(gl);
+            if (o.enable) {
+                o.draw(gl);
+            }
             //o.addForce(new Vector(0, 0, 0));
         }
 

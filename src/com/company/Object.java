@@ -11,11 +11,10 @@ import java.io.Serializable;
 
 public class Object implements Serializable{
 
-    boolean enable; // Om fysikk skal beregnes for dette objektet
+    boolean enable = true; // Om fysikk skal beregnes for dette objektet
 
 
     Object() {
-        this.enable = true;
     }
 
     void draw(GL2 gl) {

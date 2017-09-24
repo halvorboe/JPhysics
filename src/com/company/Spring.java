@@ -27,8 +27,13 @@ public class Spring extends Object{
 
     void update(Scene scene) {
         // Denne skal adde en applied force istedet
-        p1.update(p2.getPosition().minus(p1.getPosition()), k * extension()); // F = kx
-        p2.update(p1.getPosition().minus(p2.getPosition()), k * extension());
+        Vector v = p2.getPosition().minus(p1.getPosition());
+        double f = k * extension();
+        p1.update(v, f); // F = kx
+        p2.update(v.multiply(-1), f);
+        if (extension() > length * 100d || extension() < length * -100d) {
+            System.out.println("ERROR: " + extension());
+        }
     }
 
     private double extension() {

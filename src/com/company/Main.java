@@ -35,7 +35,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.0005, 0);
+    static final Vector GRAVITY = new Vector(0, -0.005, 0);
 
     public Main() {
         this.addGLEventListener(this);
