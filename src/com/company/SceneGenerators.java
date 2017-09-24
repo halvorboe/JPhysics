@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SceneGenerators {
@@ -17,10 +18,10 @@ public class SceneGenerators {
         for(int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (i + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.5));
                 }
                 if (j + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.05));
+                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.5));
                 }
             }
         }
@@ -29,7 +30,7 @@ public class SceneGenerators {
         scene.addObject(f);
 
         for (Object o : scene.objects) {
-            o.addForce(new Vector(0.0, 0, -0.001));
+            o.addForce(new Vector(0.0, 0, -0.000001));
         }
         System.out.println(scene);
 
@@ -97,10 +98,37 @@ public class SceneGenerators {
             scene.addObject(points[i]);
         }
 
+        final int NUMBER_OF_SPRINGS = 600;
+
+        ArrayList<Spring> springs = new ArrayList<Spring>();
+
         //Connects the points with springs
-        for(int i = 0; i < points.length; i++){
-            
+        for (int n = 0; n < NUMBER_OF_SPRINGS; n++) {
+            Spring spring = new Spring(new Point(new Vector(0, 0, 0), 10, true), new Point(new Vector(100000, 100000, 1000000), 100, true), 1);
+            for (int i = 0; i < points.length; i++) {
+                for (int j = 0; j < points.length; j++) {
+                    Vector p1 = points[i].getPosition();
+                    Vector p2 = points[j].getPosition();
+                    if (p1.minus(p2).length() < spring.getLength()) {
+                        boolean found = false;
+                        for (Spring s : springs) {
+                            if ((p1 == s.getP1().getPosition() && p2 == s.getP2().getPosition()) || (p2 == s.getP1().getPosition() && p1 == s.getP2().getPosition())) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            spring = new Spring(points[i], points[j], 2);
+                        }
+                    }
+
+                }
+            }
+            springs.add(spring);
+            scene.addObject(spring);
+
         }
+        System.out.println(springs);
 
 
 

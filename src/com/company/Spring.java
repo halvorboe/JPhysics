@@ -34,4 +34,16 @@ public class Spring extends Object{
     private double extension() {
         return p2.getPosition().minus(p1.getPosition()).length() - length;
     }
+
+    public Point getP1() {
+        return p1;
+    }
+
+    public Point getP2() {
+        return p2;
+    }
+
+    public double getLength() {
+        return length;
+    }
 }
