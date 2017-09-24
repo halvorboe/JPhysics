@@ -43,12 +43,18 @@ public class Point extends Object{
         }
     }
 
-    void update() {
+    void update(Scene scene) {
         if (!fixed) {
             velocity = velocity.plus(force);
             velocity = velocity.plus(GRAVITY); // a = F / m
-            velocity = velocity.multiply(0.995);
+            velocity = velocity.multiply(0.95);
             position = position.plus(velocity);
+            for (Plane p : scene.getCollide()) {
+                double d = p.getDistance(this);
+                if (d < 100d) {
+                    velocity = velocity.plus(new Vector(0, 1d / Math.pow(d * 1000, 2), 0));
+                }
+            }
         }
     }
 

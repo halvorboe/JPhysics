@@ -25,7 +25,7 @@ public class Spring extends Object{
         gl.glEnd();
     }
 
-    void update() {
+    void update(Scene scene) {
         // Denne skal adde en applied force istedet
         p1.update(p2.getPosition().minus(p1.getPosition()), k * extension()); // F = kx
         p2.update(p1.getPosition().minus(p2.getPosition()), k * extension());

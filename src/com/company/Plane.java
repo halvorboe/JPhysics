@@ -27,4 +27,8 @@ public class Plane extends Object{
         }
     }
 
+    public double getDistance(Point point) {
+        return point.getPosition().y + 5d;
+    }
+
 }

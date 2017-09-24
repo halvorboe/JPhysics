@@ -22,7 +22,7 @@ public class Object implements Serializable{
 
     }
 
-    void update() {
+    void update(Scene scene) {
 
 
     }

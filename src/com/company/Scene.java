@@ -9,9 +9,16 @@ import java.util.ArrayList;
 public class Scene implements Serializable {
 
     ArrayList<Object> objects;
+    ArrayList<Plane> collide;
 
     Scene() {
         objects = new ArrayList<Object>();
+        collide = new ArrayList<Plane>();
+    }
+
+    public void addObject(Plane p) {
+        objects.add(p);
+        collide.add(p);
     }
 
     public void addObject(Object o) {
@@ -24,7 +31,7 @@ public class Scene implements Serializable {
 
     public void iterate(GL2 gl) {
         for (Object o : objects) {
-            o.update();
+            o.update(this);
         }
         for (Object o : objects) {
             o.draw(gl);
@@ -39,5 +46,9 @@ public class Scene implements Serializable {
             s += o + "\n";
         }
         return s;
+    }
+
+    public ArrayList<Plane> getCollide() {
+        return collide;
     }
 }
