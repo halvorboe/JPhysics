@@ -28,7 +28,10 @@ public class Spring extends Object{
     void update(Scene scene) {
         // Denne skal adde en applied force istedet
         Vector v = p2.getPosition().minus(p1.getPosition());
-        double f = k * extension();
+        if (v.length() != 0) {
+            v.multiply(1 / v.length());
+        }
+        double f = (k * extension()) / 100;
         p1.update(v, f); // F = kx
         p2.update(v.multiply(-1), f);
         if (extension() > length * 100d || extension() < length * -100d) {
@@ -37,7 +40,9 @@ public class Spring extends Object{
     }
 
     private double extension() {
-        return p2.getPosition().minus(p1.getPosition()).length() - length;
+        Vector v0 = p2.getPosition().minus(p1.getPosition());
+        Vector v1 = (p2.getPosition().plus(p2.getVelocity())).minus(p1.getPosition().plus(p1.getVelocity()));
+        return (v0.length() + v1.length()) / 2 - length;
     }
 
     public Point getP1() {

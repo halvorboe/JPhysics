@@ -47,11 +47,11 @@ public class Point extends Object{
         if (!fixed) {
             velocity = velocity.plus(force);
             velocity = velocity.plus(GRAVITY); // a = F / m
-            velocity = velocity.multiply(1d / Math.pow(1d + velocity.length() / 15, 2));
+            velocity = velocity.multiply(1d / Math.pow(1d + (velocity.length() / 1.1d), 2));
             position = position.plus(velocity);
             for (Plane p : scene.getCollide()) {
                 double d = p.getDistance(this);
-                velocity = velocity.plus(new Vector(0, 0.9d / Math.pow(5 * d, 2), 0));
+                velocity = velocity.plus(new Vector(0, 1d / Math.pow(100 * d, 2), 0));
             }
         }
     }
@@ -68,7 +68,17 @@ public class Point extends Object{
         this.position = position;
     }
 
+    public Vector getVelocity() {
+        return velocity;
+    }
+
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
+
+    @Override
+    public String toString() {
+        return "Vector: (" + position.x + ", " + position.y + ", " + position.z + ")";
+    }
+
 }

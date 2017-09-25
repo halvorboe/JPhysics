@@ -18,16 +18,13 @@ public class SceneGenerators {
         for(int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (i + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.5));
+                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.1));
                 }
                 if (j + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.5));
+                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.1));
                 }
             }
         }
-
-        Plane f = new Plane();
-        scene.addObject(f);
 
         for (Object o : scene.objects) {
             o.addForce(new Vector(0.0, 0, -0.000001));
@@ -98,13 +95,13 @@ public class SceneGenerators {
             scene.addObject(points[i]);
         }
 
-        final int NUMBER_OF_SPRINGS = samples * 2;
+        final int NUMBER_OF_SPRINGS = (int) Math.round(samples * 2.0);
 
         ArrayList<Spring> springs = new ArrayList<Spring>();
 
         //Connects the points with springs
         for (int n = 0; n < NUMBER_OF_SPRINGS; n++) {
-            Spring spring = new Spring(new Point(new Vector(0, 0, 0), 1, false), new Point(new Vector(100000, 100000, 1000000), 100, false), 1);
+            Spring spring = new Spring(new Point(new Vector(0, 0, 0), 10, false), new Point(new Vector(100000, 100000, 1000000), 100, false), 1);
             for (int i = 0; i < points.length; i++) {
                 for (int j = 0; j < points.length; j++) {
                     Vector p1 = points[i].getPosition();
@@ -118,7 +115,7 @@ public class SceneGenerators {
                             }
                         }
                         if (!found) {
-                            spring = new Spring(points[i], points[j], 1.0);
+                            spring = new Spring(points[i], points[j], 1);
                         }
                     }
 
@@ -132,6 +129,8 @@ public class SceneGenerators {
         for(Point p : points) {
             p.addForce(p.getPosition().multiply(0.02));
         }
+
+        scene.addObject(new Plane());
 
         return scene;
     }

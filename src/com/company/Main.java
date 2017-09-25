@@ -35,63 +35,10 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.005, 0);
+    static final Vector GRAVITY = new Vector(0, -0.0035, 0);
 
     public Main() {
         this.addGLEventListener(this);
-    }
-
-
-
-    public void init(GLAutoDrawable drawable) {
-        //scene = cloth(scene);
-        scene = sphere(scene);
-        scene.addObject(new Plane());
-
-        gl = drawable.getGL().getGL2();
-        glu = new GLU();
-        gl.glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
-        gl.glEnable(GL2.GL_DEPTH_TEST);
-        gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
-        gl.glEnable(GL2.GL_BLEND);
-        gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
-    }
-
-
-    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-
-        if (height == 0) height = 1;
-        float aspect = (float) width / height;
-
-        gl.glMatrixMode(GL2.GL_PROJECTION);
-        gl.glLoadIdentity();
-        glu.gluPerspective(45.0, aspect, 0.1, 100.0);
-
-        gl.glMatrixMode(GL2.GL_MODELVIEW);
-        gl.glLoadIdentity();
-    }
-
-    /**
-     * Called by OpenGL for drawing
-     */
-    public void display(GLAutoDrawable drawable) {
-
-        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
-        gl.glLoadIdentity();
-
-        gl.glTranslatef(0.0f, 0.0f, -20);
-        gl.glRotatef(20, 1f, 0f, 0f);
-        gl.glRotatef(angle, 0f, 1f, 0f);
-
-        scene.iterate(gl);
-        angle += 0.12;
-
-    }
-
-    /**
-     * Called before the OpenGL context is destroyed. Release resource such as buffers.
-     */
-    public void dispose(GLAutoDrawable drawable) {
     }
 
     /**
@@ -109,8 +56,59 @@ public class Main extends GLCanvas implements GLEventListener {
         frame.pack();
         frame.setVisible(true);
 
-        FPSAnimator animator = new FPSAnimator(canvas, 60, true);
+        FPSAnimator animator = new FPSAnimator(canvas, 100, true);
         animator.start();
+    }
+
+
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+
+        if (height == 0) height = 1;
+        float aspect = (float) width / height;
+
+        gl.glMatrixMode(GL2.GL_PROJECTION);
+        gl.glLoadIdentity();
+        glu.gluPerspective(45.0, aspect, 0.1, 100.0);
+
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
+        gl.glLoadIdentity();
+    }
+
+    public void init(GLAutoDrawable drawable) {
+        scene = sphere(scene);
+        //scene = cloth(scene);
+        scene.addObject(new Plane());
+
+        gl = drawable.getGL().getGL2();
+        glu = new GLU();
+        gl.glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+        gl.glEnable(GL2.GL_DEPTH_TEST);
+        gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL2.GL_NICEST);
+        gl.glEnable(GL2.GL_BLEND);
+        gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    /**
+     * Called before the OpenGL context is destroyed. Release resource such as buffers.
+     */
+    public void dispose(GLAutoDrawable drawable) {
+    }
+
+    /**
+     * Called by OpenGL for drawing
+     */
+    public void display(GLAutoDrawable drawable) {
+
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity();
+
+        gl.glTranslatef(0.0f, 0.0f, -50);
+        gl.glRotatef(20, 1f, 0f, 0f);
+        gl.glRotatef(angle, 0f, 1f, 0f);
+
+        scene.iterate(gl);
+        angle += 0.12;
+
     }
 
     private double map(double v, double from_min, double to_min, double from_max, double to_max) {
