@@ -18,16 +18,16 @@ public class SceneGenerators {
         for(int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (i + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 0.1));
+                    scene.addObject(new Spring(points[i][j], points[i + 1][j], 10));
                 }
                 if (j + 1 < 10) {
-                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 0.1));
+                    scene.addObject(new Spring(points[i][j], points[i][j + 1], 10));
                 }
             }
         }
 
         for (Object o : scene.objects) {
-            o.addForce(new Vector(0.0, 0, -0.000001));
+            o.addForce(new Vector(0.0, 0, -0.001));
         }
         System.out.println(scene);
 
@@ -95,7 +95,7 @@ public class SceneGenerators {
             scene.addObject(points[i]);
         }
 
-        final int NUMBER_OF_SPRINGS = (int) Math.round(samples * 2.0);
+        final int NUMBER_OF_SPRINGS = (int) Math.round(samples * 2.2);
 
         ArrayList<Spring> springs = new ArrayList<Spring>();
 
@@ -115,7 +115,7 @@ public class SceneGenerators {
                             }
                         }
                         if (!found) {
-                            spring = new Spring(points[i], points[j], 1);
+                            spring = new Spring(points[i], points[j], 100);
                         }
                     }
 

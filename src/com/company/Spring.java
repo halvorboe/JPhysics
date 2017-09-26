@@ -33,7 +33,7 @@ public class Spring extends Object{
         }
         double f = (k * extension()) / 100;
         p1.update(v, f); // F = kx
-        p2.update(v.multiply(-1), f);
+        p2.update(v, -f);
         if (extension() > length * 100d || extension() < length * -100d) {
             System.out.println("ERROR: " + extension());
         }
