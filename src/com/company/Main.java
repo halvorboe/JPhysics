@@ -35,7 +35,7 @@ public class Main extends GLCanvas implements GLEventListener {
 
     private float angle = 0;
 
-    static final Vector GRAVITY = new Vector(0, -0.005, 0);
+    static final Vector GRAVITY = new Vector(0, -0.001, 0);
 
     public Main() {
         this.addGLEventListener(this);
@@ -77,7 +77,7 @@ public class Main extends GLCanvas implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         //scene = sphere(scene);
         scene = cloth(scene);
-        scene.addObject(new Plane());
+        //scene.addObject(new Plane());
 
         gl = drawable.getGL().getGL2();
         glu = new GLU();

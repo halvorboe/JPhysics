@@ -32,6 +32,7 @@ public class Spring extends Object{
             v.multiply(1 / v.length());
         }
         double f = (k * extension()) / 100;
+        //System.out.println(f);
         p1.update(v, f); // F = kx
         p2.update(v, -f);
         if (extension() > length * 100d || extension() < length * -100d) {
@@ -42,6 +43,7 @@ public class Spring extends Object{
     private double extension() {
         Vector v0 = p2.getPosition().minus(p1.getPosition());
         Vector v1 = (p2.getPosition().plus(p2.getVelocity())).minus(p1.getPosition().plus(p1.getVelocity()));
+        //System.out.println(this.p1 + " | " + this.p2);
         return (v0.length() + v1.length()) / 2 - length;
     }
 
@@ -55,5 +57,10 @@ public class Spring extends Object{
 
     public double getLength() {
         return length;
+    }
+
+    @Override
+    public String toString() {
+        return p1 + " - " + p2;
     }
 }
